@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import {
   Popover,
@@ -64,39 +65,39 @@ function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/90 backdrop-blur-md">
       <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6">
         {/* LEFT: Brand */}
-        <a
-          href="/"
+        <Link
+          to="/"
           aria-label="Go to Home"
           className="flex items-center gap-3 group"
         >
-          <div className="h-14 w-14 flex items-center justify-center rounded-full  group-hover:scale-110 transition-all duration-300">
+          <div className="h-14 w-14 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300">
             <img
               src="/logo.svg"
               alt="TripPlanner logo"
               className="h-40 w-40 object-contain"
             />
           </div>
-        </a>
+        </Link>
 
         {/* RIGHT: Actions */}
         <div className="flex items-center gap-3">
-          {/* Show Create Trip always */}
-          <a href="/create-trip" aria-label="Create Trip">
+          {/* Create Trip (always visible) */}
+          <Link to="/create-trip" aria-label="Create Trip">
             <Button variant="outline" className="rounded-full px-5 text-sm">
               + Create Trip
             </Button>
-          </a>
+          </Link>
 
-          {/* Show My Trips only if logged in */}
+          {/* My Trips (only if logged in) */}
           {user && (
-            <a href="/my-trips" aria-label="My Trips">
+            <Link to="/my-trips" aria-label="My Trips">
               <Button variant="outline" className="rounded-full px-5 text-sm">
                 My Trips
               </Button>
-            </a>
+            </Link>
           )}
 
-          {/* If user logged in show avatar, else show Sign In */}
+          {/* If user logged in show avatar, else Sign In */}
           {user ? (
             <Popover>
               <PopoverTrigger asChild>
